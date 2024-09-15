@@ -8,37 +8,193 @@
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
-            color: #333;
-            text-align: center;
+            margin: 0;
+            padding: 0;
         }
+
         header {
             background-color: #00796B;
-            padding: 10px;
             color: white;
+            padding: 10px 20px;
+            text-align: center;
         }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com/1200x400') no-repeat center center;
+            background-size: cover;
+            text-align: center;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+        }
+
+        .feature {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .feature h2 {
+            color: #00796B;
+        }
+
+        .feature p {
+            font-size: 1.2em;
+        }
+
         footer {
             background-color: #00796B;
-            padding: 5px;
             color: white;
-            position: fixed;
+            padding: 20px;
+            text-align: center;
+            position: relative;
             bottom: 0;
             width: 100%;
         }
-        .content {
-            padding: 20px;
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        form input, form button {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: none;
+        }
+
+        form input {
+            width: 80%;
+        }
+
+        form button {
+            background-color: #00574B;
+            color: white;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #00403C;
+        }
+
+        #subscription-message {
+            color: green;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
+
     <header>
-        <h1>Welcome to Guardian Pharmacy</h1>
+        <h1>Guardian Pharmacy</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#features">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <div class="content">
-        <h2>Your trusted partner for health and wellness</h2>
-        <p>At Guardian Pharmacy, we provide prescription medications, health products, and wellness advice to all Australians. Visit us online for more information!</p>
-    </div>
-    <footer>
-        <p>Contact us at info@guardianpharmacy.com.au</p>
+
+    <section class="hero" id="home">
+        <h1>Welcome to Guardian Pharmacy</h1>
+        <p>Your trusted partner for health and wellness</p>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature">
+            <h2>Prescription Management</h2>
+            <p>Easily manage your prescriptions online with us.</p>
+        </div>
+        <div class="feature">
+            <h2>Wellness Products</h2>
+            <p>We offer a wide range of health and wellness items.</p>
+        </div>
+        <div class="feature">
+            <h2>Free Consultations</h2>
+            <p>Get professional advice from our pharmacists online.</p>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@guardianpharmacy.com.au">info@guardianpharmacy.com.au</a></p>
+            <p>Phone: 1-800-123-456</p>
+        </div>
+        <div class="newsletter">
+            <h3>Subscribe to Newsletter</h3>
+            <form id="newsletter-form">
+                <input type="email" id="email" placeholder="Enter your email">
+                <button type="submit">Subscribe</button>
+            </form>
+            <p id="subscription-message"></p>
+        </div>
+        <p>&copy; 2024 Guardian Pharmacy</p>
     </footer>
+
+    <script>
+        document.getElementById("newsletter-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+            const email = document.getElementById("email").value;
+            const message = document.getElementById("subscription-message");
+
+            if (email && validateEmail(email)) {
+                message.innerText = "Thank you for subscribing!";
+                message.style.color = "green";
+            } else {
+                message.innerText = "Please enter a valid email.";
+                message.style.color = "red";
+            }
+        });
+
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>
+
 </body>
 </html>
